@@ -32,9 +32,7 @@ main_page_head = '''
             width: 100%;
             height: 100%;
         }     
-        .movie-tile p{
-            opacity:0;    
-        }
+        
         .movie-tile p:hover {
             opacity:1;
         }
@@ -85,6 +83,16 @@ main_page_head = '''
           });
         });
 
+        function sumON(obj)
+        {
+            obj.nextElementSibling.style.display="inline";
+
+        }
+        function sumOFF(obj)
+        {
+            obj.nextElementSibling.style.display="none";
+
+        }
     </script>
 </head>
 '''
@@ -126,10 +134,10 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class=" col-md col-lg-3 col-xl-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer" title="{storyline}">
-    <img src="{poster_image_url}" width="220" height="342">
+<div class="col-md col-lg-3 col-xl-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer" title="{storyline}">
+    <img onmouseover="sumON(nextElementSibling)" onmouseout="sumOFF(nextElementSibling)" src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
-    <p>{storyline}</p>
+    <p style="display:none;">{storyline}</p>
 </div>
 '''
 
